@@ -13,7 +13,7 @@ const Sidebar = () => {
     ]
 
     return (
-        <div>
+        <div className=''>
             <ul className='ms-3'>
                 {
                     navItems.map((item, index) => (
