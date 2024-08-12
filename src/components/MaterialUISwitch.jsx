@@ -2,6 +2,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import ThemeContext from '../context/ThemeContext';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 50,
@@ -50,10 +51,23 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSwitches() {
+export default function CustomizedThemeSwitch() {
+
+  const [isChecked, setIsChecked] = React.useState(false);
+  const { isDark, setIsDark } = React.useContext(ThemeContext)
+
+
+  const handleChange = (event) => {
+    setIsChecked(event.target.checked);
+    setIsDark(event.target.checked);
+    console.log('Switch is checked:', event.target.checked);
+  };
+
+
   return (
     <FormControlLabel
-      control={<MaterialUISwitch sx={{ m: 0 }} defaultChecked />}
+      control={<MaterialUISwitch sx={{ m: 0 }} checked={isChecked}
+        onChange={handleChange} />}
     />
   );
 }
