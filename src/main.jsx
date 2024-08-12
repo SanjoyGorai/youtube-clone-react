@@ -8,12 +8,13 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import ThemeContextProvider from './context/ThemeContextProvider.jsx';
+import VideoDataContextProvider from './context/VideoDataContextProvider.jsx';
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <ThemeContextProvider>
-      <App />
+      <VideoDataContextProvider>
+        <App />
+      </VideoDataContextProvider>
     </ThemeContextProvider>
-  </StrictMode>,
 )

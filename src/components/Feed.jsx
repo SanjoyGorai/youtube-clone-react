@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { VideoCard } from './VideoCard'
+import axios from 'axios';
+import VideoDataContext from '../context/VideoDataContext';
 
 export const Feed = () => {
 
-    const videos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-        18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    const { videoData, setVideoData } = useContext(VideoDataContext);
+    if (videoData !== undefined) {
+        // console.log('setVideoData Feed:', videoData);
+    }
+
+    const items = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
     return (
-        <div className='lg:grid lg:grid-cols-5 space-x-3 space-y-3 mt-4 ms-5'>
+        <div className='lg:grid lg:grid-cols-5 space-x-4 space-y-3 mt-4 ms-10 mr-5'>
             {
-                videos.map((_, index) => (
-                    <VideoCard key={index} />
-                ))
+                videoData !== undefined ?
+                    videoData.map((item, index) => (
+                        <VideoCard key={index} videoData={item} videoTitle={item.title} />
+                    )) : ''
             }
         </div>
     )
