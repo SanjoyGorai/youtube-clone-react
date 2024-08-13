@@ -76,7 +76,7 @@ const VideoDetailsPage = () => {
     const logo = 'https://livewiredemos.com/images/avatar.png'
 
     return (
-        <div>
+        <div className='max-w-[900px]'>
             {/* <div className=''>
                 <iframe width="900" height="615" className='rounded-xl'
                     src={`https://www.youtube.com/embed/${videoId}?si=09gEC-FRKJLXSWun`}
@@ -115,7 +115,7 @@ const VideoDetailsPage = () => {
                         </div>
 
                     </div>
-                    <Description details={channelDetails} />
+                    <Description details={channelDetails} videoDetails={videoDetails} />
 
 
                     {/* <div className='flex items-center'>

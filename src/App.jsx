@@ -66,7 +66,6 @@ function App() {
 
   ]);
 
-
   return (
     <div className={`${isDark ? 'bg-[#1B1F23] ' : ''}`}>
       <Navbar />
