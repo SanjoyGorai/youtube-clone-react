@@ -3,6 +3,7 @@ import { BsDot } from 'react-icons/bs'
 import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
 import Avatar from 'react-avatar'
+import { Link } from 'react-router-dom';
 
 export const VideoCard = (props) => {
 
@@ -16,7 +17,7 @@ export const VideoCard = (props) => {
     return (
         <div>
             {videoData !== undefined ? (
-                <div className="max-w-sm overflow-hidden cursor-pointer " key={''}>
+                <div className="max-w-sm overflow-hidden " key={''}>
                     <div className="relative">
                         <img
                             className="w-full rounded-xl"
@@ -32,7 +33,7 @@ export const VideoCard = (props) => {
 
                     <div className="py-2 ">
                         <div className='flex flow-row gap-3 items-center'>
-                            <Avatar src={props?.data?.channelThumbnail[0].url} size="42" round={true} className='cursor-pointer' />
+                            <Avatar src={props?.data?.channelThumbnail[0].url} size="42" round={true} className='' />
                             <h3 className="text-start text-gray-900 text-md mb-2 font-semibold ">
                                 {props.data.title}
                             </h3>

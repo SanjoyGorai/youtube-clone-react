@@ -4,6 +4,7 @@ import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
 import Chips from './Chips';
 import Facebook from './VideoCardSkeleton';
+import { Link } from 'react-router-dom';
 
 export const Feed = () => {
 
@@ -31,7 +32,9 @@ export const Feed = () => {
                         videoData
                             .filter(item => item.type === "video")
                             .map((item, index) => (
-                                <VideoCard key={index} data={item}  />
+                                <Link to={`/watch?v=${item.videoId}`} key={item.videoId}>
+                                    <VideoCard data={item} />
+                                </Link>
                             )) : ''
                 }
             </div>

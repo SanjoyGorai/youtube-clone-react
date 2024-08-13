@@ -9,7 +9,7 @@ import ThemeContext from "./context/ThemeContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SearchPage from "./pages/SearchPage";
 import ShortsPage from "./pages/ShortsPage";
-
+import VideoDetailsPage from './pages/VideoDetailsPage'
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         method: 'GET',
         url: 'https://yt-api.p.rapidapi.com/home',
         headers: {
-          'x-rapidapi-key': '6e4f3542d1msh4d2f7d5fc314f58p1e1532jsn38558c63b3d7',
+          'x-rapidapi-key': '082d448858msh4365d3559ec3965p1d3ce0jsn3cee09057f1e',
           'x-rapidapi-host': 'yt-api.p.rapidapi.com'
         }
       };
@@ -55,7 +55,11 @@ function App() {
         {
           path: "/shorts",
           element: <ShortsPage />,
-        }
+        },
+        {
+          path: "/watch",
+          element: <VideoDetailsPage />,
+        },
       ],
       errorElement: <h1 className='text-2xl text-red-600 font-bold m-5'>ErrorPage wll be created</h1>,
     },
