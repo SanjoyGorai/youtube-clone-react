@@ -23,7 +23,7 @@ const Navbar = () => {
 
     const [isToggle, setIsToggle] = useState(false);
     const { isDark, setIsDark } = useContext(ThemeContext)
-    console.log('Navbar Theme', isDark);
+    // console.log('Navbar Theme', isDark);
     const [inputValue, setInputValue] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
 

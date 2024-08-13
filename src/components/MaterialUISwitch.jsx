@@ -60,7 +60,7 @@ export default function CustomizedThemeSwitch() {
   const handleChange = (event) => {
     setIsChecked(event.target.checked);
     setIsDark(event.target.checked);
-    console.log('Switch is checked:', event.target.checked);
+    // console.log('Switch is checked:', event.target.checked);
   };
 
 

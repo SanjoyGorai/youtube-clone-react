@@ -4,12 +4,13 @@ import axios from 'axios';
 import Avatar from 'react-avatar'
 import { BsDot } from 'react-icons/bs'
 import Description from '../components/Description';
+import TopRow from '../components/TopRow';
 
 const VideoDetailsPage = () => {
 
     const [searchParams] = useSearchParams();
     const videoId = searchParams.get('v');
-    console.log('videoId', videoId);
+    // console.log('videoId', videoId);
     const [videoDetails, setVideoDetails] = useState();
     const [channelDetails, setChannelDetails] = useState();
     const longText = `Now let's talk about another arrival, one that started to change warfare as we know it. But first, a question: what is the biggest problem with Israel's Iron Dome system? I would argue it's the cost. Each Israeli interceptor missile costs about $50,000, but what if Israel had a cost-effective way to stop the rockets, a way to hit one rocket after another endlessly without having to worry about its expensive interceptors running out? Sounds ideal, right? Well, it may become a reality soon because Israel is reportedly rolling out a new defense system. It's the stuff of sci-fi movies. Israel calls it its defensive trump card. It's the iron beam anti-missile laser system...`;
@@ -76,7 +77,7 @@ const VideoDetailsPage = () => {
     const logo = 'https://livewiredemos.com/images/avatar.png'
 
     return (
-        <div className='max-w-[900px]'>
+        <div className='max-w-[1150px]'>
             {/* <div className=''>
                 <iframe width="900" height="615" className='rounded-xl'
                     src={`https://www.youtube.com/embed/${videoId}?si=09gEC-FRKJLXSWun`}
@@ -88,7 +89,7 @@ const VideoDetailsPage = () => {
             </div> */}
             <div className="" key={''}>
                 <div className="relative">
-                    <iframe width="900" height="615" className='rounded-xl'
+                    <iframe width="1150" height="685" className='rounded-xl'
                         src={`https://www.youtube.com/embed/${videoId}?si=09gEC-FRKJLXSWun`}
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -100,7 +101,8 @@ const VideoDetailsPage = () => {
                 </div>
 
                 <div className="py-2 ">
-                    <div className='flex flow-row gap-3 items-center'>
+                    <TopRow channelDetails={channelDetails} />
+                    {/* <div className='flex flow-row gap-3 items-center'>
                         <Avatar src={logo} size="42" round={true} className='' />
                         <div className='fles p-1'>
                             <h3 className="text-start text-gray-900 text-md mb-2 font-semibold ">
@@ -108,13 +110,13 @@ const VideoDetailsPage = () => {
                             </h3>
                             <p className="text-gray-600 text-sm truncate">
                                 {channelDetails?.subscriberCount !== undefined ?
-                                    (formatSubscriberCount(channelDetails?.subscriberCount?.toString())) :
+                                    (formatSubscriberCount(channelDetails?.subscriberCount?.toString()) + ' subscribers') :
                                     'subscriberCount is undefined'
                                 }
                             </p>
                         </div>
 
-                    </div>
+                    </div> */}
                     <Description details={channelDetails} videoDetails={videoDetails} />
 
 
