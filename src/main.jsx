@@ -10,7 +10,9 @@ import '@fontsource/roboto/700.css';
 import ThemeContextProvider from './context/ThemeContextProvider.jsx';
 import VideoDataContextProvider from './context/VideoDataContextProvider.jsx';
 import { LoadingContextProvider } from './context/LoadingContextProvider.jsx';
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import SearchPage from './pages/SearchPage.jsx'
+import ShortsPage from './pages/ShortsPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <ThemeContextProvider>

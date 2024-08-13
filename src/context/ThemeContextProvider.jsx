@@ -3,7 +3,7 @@ import ThemeContext from '../context/ThemeContext.js'
 
 const ThemeContextProvider = ({ children }) => {
 
-    const [isDark, setIsDark] = useState(false)
+    const [isDark, setIsDark] = useState(false);
 
     return (
         <ThemeContext.Provider value={{ isDark, setIsDark }}>
