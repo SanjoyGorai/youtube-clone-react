@@ -17,9 +17,9 @@ export const VideoCard = (props) => {
                 <div className="max-w-sm rounded-xl overflow-hidden " key={''}>
                     <div className="relative">
                         <img
-                            className="w-full "
-                            src={videoData[20].thumbnail[0].url}
-                            alt="Video Thumbnail"
+                            className="w-full"
+                            src={videoData[6].thumbnail[0].url}
+                            alt="Thumbnail"
                         />
                         <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-1.5 py-0.5 rounded">
                             {'00:00'}

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
-import Buttons from './Buttons'
+import Chips from './Chips'
 import { Feed } from './Feed'
 import ThemeContext from '../context/ThemeContext'
 import { AutoSuggestion } from './Autosuggestion'
@@ -15,12 +15,9 @@ const Home = () => {
             <Navbar />
             <div className='flex'>
                 <Sidebar />
-                <div className='flex flex-col ms-5  '>
+                <div className=''>
                     {/* <AutoSuggestion /> */}
-                    <Buttons />
-                    <div className='  '>
-                        <Feed />
-                    </div>
+                    <Feed />
                 </div>
             </div>
         </div>

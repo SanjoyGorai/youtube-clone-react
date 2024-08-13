@@ -24,6 +24,13 @@ const Navbar = () => {
     const [isToggle, setIsToggle] = useState(false);
     const { isDark, setIsDark } = useContext(ThemeContext)
     console.log('Navbar Theme', isDark);
+    const [inputValue, setInputValue] = useState('');
+    const [showSuggestions, setShowSuggestions] = useState(false);
+
+    function handleInputFocus(e) {
+        console.log('focuss input focus');
+        setShowSuggestions(true);
+    }
 
 
     function handleToggle(e) {
@@ -39,7 +46,7 @@ const Navbar = () => {
                         alt="" className='w-30 h-5 cursor-pointer' />
                 </div>
                 <div className='flex items-center'>
-                    <input type="text" placeholder='Search' className={`text-black border border-gray-600 focus:border-sky-600 w-96 outline-none h-10 p-2 ps-4 rounded-l-full lg:w-[32rem]`} />
+                    <input onFocus={handleInputFocus} type="text" placeholder='Search' className={`text-black border border-gray-600 focus:border-sky-600 w-96 outline-none h-10 p-2 ps-4 rounded-l-full lg:w-[32rem]`} />
                     <button><BiSearch className='w-20 bg-white text-black border-black border-r border-y rounded-r-full p-2 size-10' /></button>
                     <BsFillMicFill className='ms-5 p-3 size-10 bg-gray-200 rounded-full
                  hover:bg-gray-300 cursor-pointer' />
