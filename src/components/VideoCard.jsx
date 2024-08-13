@@ -18,8 +18,11 @@ export const VideoCard = (props) => {
                     <div className="relative">
                         <img
                             className="w-full rounded-xl"
-                            src={videoData[6].thumbnail[0].url}
+                            src={props.data?.thumbnail !== undefined ?
+                                props.data?.thumbnail[0]?.url :
+                                'https://img.youtube.com/vi/BbNJNgav3Lk/maxresdefault.jpg'}
                             alt="Thumbnail"
+                        // videoData[6].thumbnail[0].url
                         />
                         <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-1.5 py-0.5 rounded">
                             {'00:00'}
@@ -28,7 +31,7 @@ export const VideoCard = (props) => {
 
                     <div className=" py-2">
                         <h3 className="text-start text-gray-900 text-md mb-2 font-semibold ">
-                            {props.videoData.title}
+                            {props.data.title}
                         </h3>
                         <div className='flex items-center'>
                             <p className="text-gray-600 text-sm truncate">

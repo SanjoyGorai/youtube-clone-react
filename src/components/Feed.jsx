@@ -21,7 +21,7 @@ export const Feed = () => {
                 {
                     videoData !== undefined ?
                         videoData.map((item, index) => (
-                            <VideoCard key={index} videoData={item} videoTitle={item.title} />
+                            <VideoCard key={index} data={item} videoTitle={item.title} />
                         )) : ''
                 }
             </div>
