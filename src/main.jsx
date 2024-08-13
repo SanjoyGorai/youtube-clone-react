@@ -9,12 +9,15 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import ThemeContextProvider from './context/ThemeContextProvider.jsx';
 import VideoDataContextProvider from './context/VideoDataContextProvider.jsx';
+import { LoadingContextProvider } from './context/LoadingContextProvider.jsx';
 
 
 createRoot(document.getElementById('root')).render(
-    <ThemeContextProvider>
-      <VideoDataContextProvider>
+  <ThemeContextProvider>
+    <VideoDataContextProvider>
+      <LoadingContextProvider>
         <App />
-      </VideoDataContextProvider>
-    </ThemeContextProvider>
+      </LoadingContextProvider>
+    </VideoDataContextProvider>
+  </ThemeContextProvider>
 )

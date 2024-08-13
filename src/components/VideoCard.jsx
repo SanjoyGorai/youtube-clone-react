@@ -14,10 +14,10 @@ export const VideoCard = (props) => {
     return (
         <div>
             {videoData !== undefined ? (
-                <div className="max-w-sm rounded-xl overflow-hidden " key={''}>
+                <div className="max-w-sm overflow-hidden " key={''}>
                     <div className="relative">
                         <img
-                            className="w-full"
+                            className="w-full rounded-xl"
                             src={videoData[6].thumbnail[0].url}
                             alt="Thumbnail"
                         />

@@ -3,6 +3,7 @@ import { VideoCard } from './VideoCard'
 import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
 import Chips from './Chips';
+import Facebook from './VideoCardSkeleton';
 
 export const Feed = () => {
 
@@ -16,7 +17,7 @@ export const Feed = () => {
     return (
         <div className='ms-2'>
             <Chips />
-            <div className='lg:grid lg:grid-cols-5 space-y-3 mt-4 ms-10 mr-5'>
+            <div className='lg:grid lg:grid-cols-5 space-y-3 mt-4 ms-10 mr-5 space-x-3 '>
                 {
                     videoData !== undefined ?
                         videoData.map((item, index) => (

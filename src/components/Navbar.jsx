@@ -46,8 +46,8 @@ const Navbar = () => {
                         alt="" className='w-30 h-5 cursor-pointer' />
                 </div>
                 <div className='flex items-center'>
-                    <input onFocus={handleInputFocus} type="text" placeholder='Search' className={`text-black border border-gray-600 focus:border-sky-600 w-96 outline-none h-10 p-2 ps-4 rounded-l-full lg:w-[32rem]`} />
-                    <button><BiSearch className='w-20 bg-white text-black border-black border-r border-y rounded-r-full p-2 size-10' /></button>
+                    <input onFocus={handleInputFocus} type="text" placeholder='Search' className={`text-black border border-gray-300 focus:border-sky-600 w-96 outline-none h-10 p-2 ps-4 rounded-l-full lg:w-[32rem]`} />
+                    <button><BiSearch className='w-16 bg-white text-gray-500 border-gray-300 border-r border-y rounded-r-full p-2 size-10 hover:bg-gray-200' /></button>
                     <BsFillMicFill className='ms-5 p-3 size-10 bg-gray-200 rounded-full
                  hover:bg-gray-300 cursor-pointer' />
                 </div>
