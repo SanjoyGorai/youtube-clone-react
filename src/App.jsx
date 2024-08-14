@@ -10,6 +10,8 @@ import { createBrowserRouter, Outlet, Route, RouterProvider, Routes } from "reac
 import SearchPage from "./pages/SearchPage";
 import ShortsPage from "./pages/ShortsPage";
 import VideoDetailsPage from './pages/VideoDetailsPage'
+import YTNavbar from "./components/YTNavbar";
+import SearchBar from "./components/SearchBar";
 
 
 function App() {
@@ -72,8 +74,10 @@ function App() {
 
   return (
     <div className={`${isDark ? 'bg-[#1B1F23] ' : ''}`}>
-      <Navbar />
-     
+      {/* <Navbar /> */}
+      <YTNavbar />
+      <SearchBar />
+
       {/* <RouterProvider router={router} /> */}
       <Routes>
         <Route path="/" exact element={<Feed />} />

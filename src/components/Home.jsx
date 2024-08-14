@@ -4,7 +4,6 @@ import Sidebar from './Sidebar'
 import Chips from './Chips'
 import { Feed } from './Feed'
 import ThemeContext from '../context/ThemeContext'
-import { AutoSuggestion } from './Autosuggestion'
 import { Outlet } from 'react-router-dom'
 
 

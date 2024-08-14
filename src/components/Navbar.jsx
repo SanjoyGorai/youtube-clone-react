@@ -17,7 +17,6 @@ import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
 import CustomizedThemeSwitch from './MaterialUISwitch';
 import ThemeContext from '../context/ThemeContext.js'
-import { AutoSuggestion } from './Autosuggestion.jsx';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -32,22 +31,21 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResult, setSearchResult] = useState()
-    console.log('searchQuery: ', searchQuery);
+    console.log('searchQuery : ', searchQuery);
 
     useEffect(() => {
         (async () => {
             const API_KEY = 'AIzaSyCW6sZ0RB6mPVVhcmYoz0N7PC1z8bZBwww';
             const url = `https://www.googleapis.com/youtube/v3/search`;
-            axios.get(url, {
-                params: {
-                    part: "snippet",
-                    regionCode: "IN",
-                    q: searchQuery,
-                    type: "video",
-                    maxResults: 10,
-                    key: API_KEY
-                }
-            })
+            const searchQuery = 'javascript tutorials';
+            const params = {
+                part: "snippet",
+                q: searchQuery,
+                type: "video",
+                maxResults: 10,
+                key: API_KEY
+            }
+            axios.get(url, { params })
                 .then(response => {
                     console.log('SearchResult videocard: ', response.data);
                     // setChannelDetails(response.data.items[0].snippet.thumbnails.high.url)
