@@ -12,12 +12,12 @@ export const VideoCard = ({ data }) => {
     // if (channelDetails !== undefined) {
     //     console.log('channelDetails', channelDetails);
     // }
-    console.log('video details', data);
+    // console.log('video details', data);
 
 
     useEffect(() => {
         (async () => {
-            const API_KEY = 'AIzaSyDD5BpZSzVz_mh1w079o8sZ2mpvsa6_gt8'; // Replace with your YouTube API key
+            const API_KEY = 'AIzaSyCW6sZ0RB6mPVVhcmYoz0N7PC1z8bZBwww'; // Replace with your YouTube API key
             const url = `https://www.googleapis.com/youtube/v3/channels`;
             axios.get(url, {
                 params: {

@@ -6,6 +6,7 @@ import Chips from './Chips';
 import Facebook from './VideoCardSkeleton';
 import { Link } from 'react-router-dom';
 import getYTVideos from '../api/getYTVideos';
+import Sidebar from './Sidebar';
 
 export const Feed = () => {
     const [videos, setVideos] = useState();
@@ -15,7 +16,7 @@ export const Feed = () => {
             const videos = await getYTVideos()
             setVideos(videos);
         })();
-        
+
     }, [])
 
 
@@ -26,19 +27,24 @@ export const Feed = () => {
 
 
     return (
-        <div className='ms-2'>
-            <Chips />
-            <div className='lg:grid lg:grid-cols-5 space-y-3 mt-4 ms-10 mr-5 space-x-3 '>
-                {
-                    videos !== undefined ?
-                        videos
-                            // .filter(item => item.type === "video")
-                            .map((item, index) => (
-                                <Link to={`/watch?v=${item.id}`} key={index}>
-                                    <VideoCard data={item} />
-                                </Link>
-                            )) : ''
-                }
+        <div className='ms-2 flex'>
+            <div className='flex '>
+                <Sidebar />
+            </div>
+            <div className='flex flex-col'>
+                <Chips />
+                <div className='lg:grid lg:grid-cols-5 space-y-3 mt-4 ms-10 mr-5 space-x-3 '>
+                    {
+                        videos !== undefined ?
+                            videos
+                                // .filter(item => item.type === "video")
+                                .map((item, index) => (
+                                    <Link to={`/watch?v=${item.id}`} key={index}>
+                                        <VideoCard data={item} />
+                                    </Link>
+                                )) : ''
+                    }
+                </div>
             </div>
         </div>
     )
