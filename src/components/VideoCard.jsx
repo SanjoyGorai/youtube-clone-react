@@ -1,21 +1,43 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { BsDot } from 'react-icons/bs'
 import axios from 'axios';
-import VideoDataContext from '../context/VideoDataContext';
 import Avatar from 'react-avatar'
 import { Link } from 'react-router-dom';
 import formatViewsCount, { timeAgo } from '../utils/formatViewsCount';
+import formatYouTubeDuration from '../utils/formatYouTubeDuration';
 
 export const VideoCard = ({ data }) => {
 
-    // console.log('data from videocard:', data);
+    const [channelDetails, setChannelDetails] = useState()
+    // if (channelDetails !== undefined) {
+    //     console.log('channelDetails', channelDetails);
+    // }
+    console.log('video details', data);
 
-    const { videoData } = useContext(VideoDataContext);
-    if (videoData !== undefined) {
-        // console.log('videoData from VideoCard: ', videoData);
-    }
-    // console.log('video title VideoCard: ', props.data );
-    const logo = 'https://livewiredemos.com/images/avatar.png'
+
+    useEffect(() => {
+        (async () => {
+            const API_KEY = 'AIzaSyDD5BpZSzVz_mh1w079o8sZ2mpvsa6_gt8'; // Replace with your YouTube API key
+            const url = `https://www.googleapis.com/youtube/v3/channels`;
+            axios.get(url, {
+                params: {
+                    part: 'snippet,contentDetails,statistics',
+                    id: data?.snippet?.channelId,
+                    key: API_KEY
+                }
+            })
+                .then(response => {
+                    // console.log('Channel Details videocard: ', response.data.items[0].snippet.thumbnails.high.url);
+                    // setChannelDetails(response.data.items[0].snippet.thumbnails.high.url)
+                    setChannelDetails(response.data)
+                })
+                .catch(error => {
+                    console.error('Error fetching the channel data:', error);
+                });
+        })();
+
+    }, [])
+
 
     return (
         <div>
@@ -29,12 +51,13 @@ export const VideoCard = ({ data }) => {
                         alt="Thumbnail"
                     />
                     <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-1.5 py-0.5 rounded">
-                        {'55:20'}
+                        {/* {data?.contentDetails?.duration} */}
+                        {formatYouTubeDuration(data?.contentDetails?.duration)}
                     </span>
                 </div>
 
                 <div className="py-2 flex flex-row items-start 00">
-                    <Avatar src={'data?.channelThumbnails.standard.url'} size="36" round={true} className='' />
+                    <Avatar src={channelDetails?.items[0]?.snippet?.thumbnails?.high?.url} size="36" round={true} className='' />
                     <div className='flex flex-col ms-2'>
                         <h3 className="text-start text-gray-900 text-md mb-2 font-semibold ">
                             {data?.snippet?.title}

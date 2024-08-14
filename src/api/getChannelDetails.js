@@ -10,7 +10,7 @@ export const SEARCH_SUGGESTIONS_API = "http://suggestqueries.google.com/complete
 
 const BASE_URL = `https://www.googleapis.com/youtube/v3/channels`
 
-async function getChannelDetails() {
+async function getChannelDetails(channelId) {
 
     // const API_KEY = 'YOUR_YOUTUBE_API_KEY'; // Replace with your YouTube API key
     const CHANNEL_ID = 'UC0v-tlzsn0QZwJnkiaUSJVQ'; // Replace with the channel ID you want to fetch
@@ -19,12 +19,13 @@ async function getChannelDetails() {
     axios.get(url, {
         params: {
             part: 'snippet,contentDetails,statistics',
-            id: CHANNEL_ID,
+            id: channelId,
             key: API_KEY
         }
     })
         .then(response => {
-            console.log('Channel Details getChannelDetails: ', response.data);
+            // console.log('Channel Details getChannelDetails: ', response.data);
+            return response.data
         })
         .catch(error => {
             console.error('Error fetching the channel data:', error);

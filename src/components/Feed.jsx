@@ -6,20 +6,16 @@ import Chips from './Chips';
 import Facebook from './VideoCardSkeleton';
 import { Link } from 'react-router-dom';
 import getYTVideos from '../api/getYTVideos';
-import getChannelDetails from '../api/getChannelDetails';
 
 export const Feed = () => {
-    const [videos, setVideos] = useState()
-    if (videos !== undefined) {
-        console.log('videos: ', videos);
-    }
+    const [videos, setVideos] = useState();
+
     useEffect(() => {
         (async () => {
             const videos = await getYTVideos()
-            getChannelDetails()
-            // console.log('Feed videos getYTVideos: ', videos);
             setVideos(videos);
-        })()
+        })();
+        
     }, [])
 
 
