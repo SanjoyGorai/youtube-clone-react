@@ -13,7 +13,7 @@ const TopRow = ({ channelDetails, videoDetails }) => {
                 <div className='flex items-center'>
                     <img src="" alt="" className='size-12 bg-red-500 rounded-full' />
                     <div className='ms-3'>
-                        <p className='font-semibold'>channel name</p>
+                    <h3 className="text-lg font-bold">channel name</h3>
                         <p>subscriber</p>
                     </div>
                     <Stack spacing={2} direction="row" className='ms-7 rounded-xl'>

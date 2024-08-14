@@ -31,7 +31,7 @@ function App() {
       try {
         const response = await axios.request(options);
         const videoData = await response.data.data
-        console.log('Video data from Feed: ', videoData);
+        // console.log('Video data from Feed: ', videoData);
         setVideoData(videoData)
       } catch (error) {
         console.error(error);

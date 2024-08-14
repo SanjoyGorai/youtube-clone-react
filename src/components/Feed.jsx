@@ -5,35 +5,39 @@ import VideoDataContext from '../context/VideoDataContext';
 import Chips from './Chips';
 import Facebook from './VideoCardSkeleton';
 import { Link } from 'react-router-dom';
+import getYTVideos from '../api/getYTVideos';
 
 export const Feed = () => {
+    const [videos, setVideos] = useState()
+    if (videos !== undefined) {
+        console.log('videos: ', videos);
+    }
+    useEffect(() => {
+        (async () => {
+            const videos = await getYTVideos()
+            // console.log('Feed videos getYTVideos: ', videos);
+            setVideos(videos);
+        })()
+    }, [])
+
 
     const { videoData, setVideoData } = useContext(VideoDataContext);
     if (videoData !== undefined) {
         // console.log('setVideoData Feed:', videoData);
     }
 
-    const items = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    const video = {
-        thumbnail: 'https://i.ytimg.com/vi/abc123/default.jpg',
-        title: 'Learn React in 10 Minutes',
-        channelName: 'React Channel',
-        channelLogo: 'https://yt3.ggpht.com/ytc/AAUvwngc/default.jpg',
-        views: '1.2M',
-        timestamp: '1 week ago',
-    };
 
     return (
         <div className='ms-2'>
             <Chips />
             <div className='lg:grid lg:grid-cols-5 space-y-3 mt-4 ms-10 mr-5 space-x-3 '>
                 {
-                    videoData !== undefined ?
-                        videoData
-                            .filter(item => item.type === "video")
+                    videos !== undefined ?
+                        videos
+                            // .filter(item => item.type === "video")
                             .map((item, index) => (
-                                <Link to={`/watch?v=${item.videoId}`} key={item.videoId}>
-                                    <VideoCard data={item} />
+                                <Link to={`/watch?v=${item.videoId}`} key={index}>
+                                    <VideoCard data={item?.snippet} />
                                 </Link>
                             )) : ''
                 }
@@ -41,3 +45,14 @@ export const Feed = () => {
         </div>
     )
 }
+
+// {
+//     videoData !== undefined ?
+//         videoData
+//             .filter(item => item.type === "video")
+//             .map((item, index) => (
+//                 <Link to={`/watch?v=${item.videoId}`} key={item.videoId}>
+//                     <VideoCard data={item} />
+//                 </Link>
+//             )) : ''
+// }

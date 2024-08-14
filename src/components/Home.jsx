@@ -7,6 +7,7 @@ import ThemeContext from '../context/ThemeContext'
 import { AutoSuggestion } from './Autosuggestion'
 import { Outlet } from 'react-router-dom'
 
+
 const Home = () => {
 
     const { isDark } = useContext(ThemeContext);
