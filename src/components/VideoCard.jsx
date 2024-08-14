@@ -4,6 +4,7 @@ import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
 import Avatar from 'react-avatar'
 import { Link } from 'react-router-dom';
+import formatViewsCount, { timeAgo } from '../utils/formatViewsCount';
 
 export const VideoCard = ({ data }) => {
 
@@ -18,47 +19,43 @@ export const VideoCard = ({ data }) => {
 
     return (
         <div>
-            {videoData !== undefined ? (
-                <div className=" overflow-hidden " key={''}>
-                    <div className="relative">
-                        <img
-                            className="w-full rounded-xl"
-                            src={data?.thumbnails !== undefined ?
-                                data?.thumbnails.standard.url :
-                                'https://img.youtube.com/vi/BbNJNgav3Lk/maxresdefault.jpg'}
-                            alt="Thumbnail"
-                        />
-                        <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-1.5 py-0.5 rounded">
-                            {'data?.lengthText'}
-                        </span>
-                    </div>
+            <div className=" overflow-hidden " key={''}>
+                <div className="relative">
+                    <img
+                        className="w-full rounded-xl"
+                        src={data?.snippet?.thumbnails !== undefined ?
+                            data?.snippet?.thumbnails.high.url :
+                            'https://img.youtube.com/vi/BbNJNgav3Lk/maxresdefault.jpg'}
+                        alt="Thumbnail"
+                    />
+                    <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-1.5 py-0.5 rounded">
+                        {'55:20'}
+                    </span>
+                </div>
 
-                    <div className="py-2 flex flex-row items-start 00">
-                        <div className=' '>
-                            {/* <Avatar src={data?.channelThumbnails.standard.url} size="36" round={true} className='' /> */}
-                        </div>
-                        <div className='flex flex-col ms-14  '>
-                            <h3 className="text-start text-gray-900 text-md mb-2 font-semibold ">
-                                {data.title}
-                            </h3>
-                            <p className="text-gray-600 text-sm">
-                                {data?.channelTitle}
+                <div className="py-2 flex flex-row items-start 00">
+                    <Avatar src={'data?.channelThumbnails.standard.url'} size="36" round={true} className='' />
+                    <div className='flex flex-col ms-2'>
+                        <h3 className="text-start text-gray-900 text-md mb-2 font-semibold ">
+                            {data?.snippet?.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm">
+                            {data?.snippet?.channelTitle}
+                        </p>
+                        <div className='flex items-center'>
+                            <p className="text-gray-600 text-sm truncate">
+                                {/* {'1.6M views'} */}
+                                {formatViewsCount(data?.statistics?.viewCount)}
                             </p>
-                            <div className='flex items-center'>
-                                <p className="text-gray-600 text-sm truncate">
-                                    {'1.6M views'}
-                                </p>
-                                <BsDot />
-                                <p className="text-gray-600 text-sm">
-                                    {'1 year ago'}
-                                </p>
-                            </div>
-
+                            <BsDot />
+                            <p className="text-gray-600 text-sm">
+                                {timeAgo(data?.snippet?.publishedAt)}
+                            </p>
                         </div>
+
                     </div>
                 </div>
-            ) : ''}
-
+            </div>
         </div>
 
     )

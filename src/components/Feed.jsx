@@ -6,6 +6,7 @@ import Chips from './Chips';
 import Facebook from './VideoCardSkeleton';
 import { Link } from 'react-router-dom';
 import getYTVideos from '../api/getYTVideos';
+import getChannelDetails from '../api/getChannelDetails';
 
 export const Feed = () => {
     const [videos, setVideos] = useState()
@@ -15,6 +16,7 @@ export const Feed = () => {
     useEffect(() => {
         (async () => {
             const videos = await getYTVideos()
+            getChannelDetails()
             // console.log('Feed videos getYTVideos: ', videos);
             setVideos(videos);
         })()
@@ -36,8 +38,8 @@ export const Feed = () => {
                         videos
                             // .filter(item => item.type === "video")
                             .map((item, index) => (
-                                <Link to={`/watch?v=${item.videoId}`} key={index}>
-                                    <VideoCard data={item?.snippet} />
+                                <Link to={`/watch?v=${item.id}`} key={index}>
+                                    <VideoCard data={item} />
                                 </Link>
                             )) : ''
                 }

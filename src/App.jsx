@@ -18,6 +18,9 @@ function App() {
   const { isDark, setIsDark } = useContext(ThemeContext);
 
   useEffect(() => {
+
+
+
     ; (async () => {
       const options = {
         method: 'GET',
@@ -29,14 +32,15 @@ function App() {
       };
 
       try {
-        const response = await axios.request(options);
-        const videoData = await response.data.data
-        // console.log('Video data from Feed: ', videoData);
-        setVideoData(videoData)
+        // const response = await axios.request(options);
+        // const videoData = await response.data.data
+        // // console.log('Video data from Feed: ', videoData);
+        // setVideoData(videoData)
       } catch (error) {
         console.error(error);
       }
-    })()
+    })();
+
   }, []);
 
   const router = createBrowserRouter([
