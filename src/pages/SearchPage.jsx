@@ -4,26 +4,50 @@ import { Link, useParams } from 'react-router-dom';
 import ThemeContext from '../context/ThemeContext';
 import Avatar from 'react-avatar';
 import { BsDot } from 'react-icons/bs';
+import axios from 'axios';
 
 const SearchPage = () => {
-    const [searchResult, setSearchResult] = useState([])
+    const [searchResult, setSearchResult] = useState()
     const { isDark, setIsDark } = useContext(ThemeContext);
     // const { setLoading } = useAppContext()
     const { searchQuery } = useParams();
     const img = `https://img.youtube.com/vi/BbNJNgav3Lk/maxresdefault.jpg`;
+    const API_KEY = 'AIzaSyCW6sZ0RB6mPVVhcmYoz0N7PC1z8bZBwww';
+    console.log('searchQuery', searchQuery);
+    if (searchResult !== undefined) {
+        console.log('searchResult :', searchResult);
 
-
-    const fetchSearchVideos = async () => {
     }
+
     useEffect(() => {
-        fetchSearchVideos()
+        const fetchVideos = async () => {
+            try {
+                const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+                    params: {
+                        part: "snippet",
+                        regionCode: 'IN',
+                        maxResults: 50,
+                        q: searchQuery,
+                        key: API_KEY,
+                        type: "video",
+                    },
+                });
+                setSearchResult(response.data.items);
+                console.log('Searched Videos: ', response.data.items);
+
+            } catch (error) {
+                console.error('Error fetching videos:', error);
+            }
+        };
+
+        fetchVideos();
     }, [searchQuery])
     return (
         <div className='flex w-full h-full'>
             <div className='flex-shrink-0 overflow-y-auto'>
-                {/* <Sidebar /> */}
+                <Sidebar />
             </div>
-            <div className={` flex-grow overflow-y-auto ${isDark ? "bg-gray-900 text-gray-300" : "bg-white text-gray-800"}`}>
+            <div className={`ms-56 flex-grow overflow-y-auto ${isDark ? "bg-gray-900 text-gray-300" : "bg-white text-gray-800"}`}>
                 <div className='p-4'>
                     {
                         <div className='flex flex-col md:flex-row mb-8'>

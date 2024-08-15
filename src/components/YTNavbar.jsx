@@ -1,7 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CiSearch } from "react-icons/ci";
+import suggestions from '../utils/suggestionsArray.js'
 
 function YTNavbar() {
+
+  const [query, setQuery] = useState('');
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+
+    if (value) {
+      const filtered = suggestions.filter((suggestion) =>
+        suggestion.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredSuggestions(filtered);
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowDown') {
+      setActiveSuggestionIndex((prevIndex) =>
+        prevIndex === filteredSuggestions.length - 1 ? 0 : prevIndex + 1
+      );
+    } else if (e.key === 'ArrowUp') {
+      setActiveSuggestionIndex((prevIndex) =>
+        prevIndex === 0 ? filteredSuggestions.length - 1 : prevIndex - 1
+      );
+    } else if (e.key === 'Enter') {
+      setQuery(filteredSuggestions[activeSuggestionIndex]);
+      setShowSuggestions(false);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setQuery(suggestion);
+    setShowSuggestions(false);
+  };
+
   return (
     <nav className="bg-white shadow-md px-4 py-2 flex items-center justify-between">
       {/* Left Section: Logo */}
@@ -18,8 +60,25 @@ function YTNavbar() {
           <input
             type="text"
             placeholder="Search"
+            value={query}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             className="w-full border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:border-gray-500"
           />
+          {showSuggestions && filteredSuggestions.length > 0 && (
+            <ul className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1 z-10">
+              {filteredSuggestions.map((suggestion, index) => (
+                <li
+                  key={suggestion}
+                  onClick={() => handleSuggestionClick(suggestion)}
+                  className={`cursor-pointer px-4 py-2 hover:bg-gray-100 ${index === activeSuggestionIndex ? 'bg-gray-400 text-white' : ''
+                    }`}
+                >
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          )}
           <button className="absolute right-0 top-0 h-full px-4 bg-gray-100 border-l border-gray-300 rounded-r-full hover:bg-gray-200">
             <CiSearch className='size-6 ' />
           </button>

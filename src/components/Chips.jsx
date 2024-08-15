@@ -3,7 +3,6 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
-import ChipSelectedContext from '../context/ChipSelectedContext';
 import categoryItems from '../utils/categoryItems';
 
 
@@ -11,7 +10,6 @@ import categoryItems from '../utils/categoryItems';
 const Chips = () => {
 
     const { videoData, setVideoData } = useContext(VideoDataContext);
-    const { isSelected, setIsSelected } = useContext(ChipSelectedContext);
     const [selectedItem, setSelectedItem] = useState(categoryItems[0]);
 
     // const handleClick = async (value) => {
@@ -39,8 +37,6 @@ const Chips = () => {
     // };
 
 
-
-
     const handleClick = (item) => {
         setSelectedItem(item);
         console.log(`Clicked on: ${item}`);
@@ -54,7 +50,7 @@ const Chips = () => {
                     <button key={index} label={item}
                         onClick={() => handleClick(item)}
                         className={`font-semibold ms-3 p-1 pl-2 pr-2 rounded bg-gray-200 gap-3 
-                                ${selectedItem === item ? 'bg-red-500' : 'hover:bg-gray-400'}`}
+                                ${selectedItem === item ? 'bg-gray-500' : 'hover:bg-gray-300'}`}
                     >{item} </button>
                 ))
             }
