@@ -12,6 +12,7 @@ import ShortsPage from "./pages/ShortsPage";
 import VideoDetailsPage from './pages/VideoDetailsPage'
 import SearchBar from "./components/SearchBar";
 import YTNavbar from "./components/YTNavbar";
+import SearchVideoCard from "./components/SearchVideoCard";
 
 
 function App() {
@@ -20,8 +21,6 @@ function App() {
   const { isDark, setIsDark } = useContext(ThemeContext);
 
   useEffect(() => {
-
-
 
     ; (async () => {
       const options = {
@@ -77,6 +76,7 @@ function App() {
       <Navbar />
       {/* <YTNavbar /> */}
       {/* <SearchBar /> */}
+      {/* <SearchVideoCard /> */}
 
       {/* <RouterProvider router={router} /> */}
       <Routes>

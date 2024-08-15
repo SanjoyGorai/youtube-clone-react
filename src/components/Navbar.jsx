@@ -34,27 +34,27 @@ const Navbar = () => {
     console.log('searchQuery : ', searchQuery);
 
     useEffect(() => {
-        (async () => {
-            const API_KEY = 'AIzaSyCW6sZ0RB6mPVVhcmYoz0N7PC1z8bZBwww';
-            const url = `https://www.googleapis.com/youtube/v3/search`;
-            const searchQuery = 'javascript tutorials';
-            const params = {
-                part: "snippet",
-                q: searchQuery,
-                type: "video",
-                maxResults: 10,
-                key: API_KEY
-            }
-            axios.get(url, { params })
-                .then(response => {
-                    console.log('SearchResult videocard: ', response.data);
-                    // setChannelDetails(response.data.items[0].snippet.thumbnails.high.url)
-                    setSearchResult(response.data)
-                })
-                .catch(error => {
-                    console.error('Error fetching the channel data:', error);
-                });
-        })();
+        // (async () => {
+        //     const API_KEY = 'AIzaSyCW6sZ0RB6mPVVhcmYoz0N7PC1z8bZBwww';
+        //     const url = `https://www.googleapis.com/youtube/v3/search`;
+        //     const searchQuery = 'javascript tutorials';
+        //     const params = {
+        //         part: "snippet",
+        //         q: searchQuery,
+        //         type: "video",
+        //         maxResults: 50,
+        //         key: API_KEY
+        //     }
+        //     axios.get(url, { params })
+        //         .then(response => {
+        //             console.log('SearchResult videocard: ', response.data);
+        //             // setChannelDetails(response.data.items[0].snippet.thumbnails.high.url)
+        //             setSearchResult(response.data)
+        //         })
+        //         .catch(error => {
+        //             console.error('Error fetching the channel data:', error);
+        //         });
+        // })();
 
     }, [])
 
