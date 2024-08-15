@@ -10,14 +10,17 @@ import ThemeContextProvider from './context/ThemeContextProvider.jsx';
 import VideoDataContextProvider from './context/VideoDataContextProvider.jsx';
 import { LoadingContextProvider } from './context/LoadingContextProvider.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ChipSelectedContextProvider } from './context/ChipSelectedContextProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <ThemeContextProvider>
     <VideoDataContextProvider>
       <LoadingContextProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <ChipSelectedContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ChipSelectedContextProvider>
       </LoadingContextProvider>
     </VideoDataContextProvider>
   </ThemeContextProvider >
