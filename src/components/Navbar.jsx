@@ -19,11 +19,12 @@ import CustomizedThemeSwitch from './MaterialUISwitch';
 import ThemeContext from '../context/ThemeContext.js'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import ToggleContext from '../context/Togglecontext.js'
 
 
 const Navbar = () => {
 
-    const [isToggle, setIsToggle] = useState(false);
+    const { isToggle, setIsToggle } = useContext(ToggleContext);
     const { isDark, setIsDark } = useContext(ThemeContext)
     const [inputValue, setInputValue] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -31,7 +32,9 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResult, setSearchResult] = useState()
-    console.log('searchQuery : ', searchQuery);
+    // console.log('searchQuery : ', searchQuery);
+    console.log(isToggle);
+
 
     useEffect(() => {
         // (async () => {
@@ -104,10 +107,10 @@ const Navbar = () => {
     return (
         <>
             <div className={`p-1 flex justify-between text-black h-14 ${isDark ? 'bg-gray-500' : 'bg-white'} `}>
-                <div className='flex items-center ms-2'>
+                <div className='flex items-center ms-3'>
                     <IoMenuSharp className='cursor-pointer size-10 p-2 mr-3 hover:bg-gray-300 hover:rounded-full hover:p-2' onClick={handleToggle} />
                     <img src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/512px-YouTube_Logo_2017.svg.png'}
-                        alt="" className='w-30 h-5 cursor-pointer' />
+                        alt="" className='w-30 h-5 cursor-pointer ms-1' />
                 </div>
                 <div className='flex items-center'>
                     <input

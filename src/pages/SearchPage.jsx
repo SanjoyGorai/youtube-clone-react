@@ -6,6 +6,7 @@ import Avatar from 'react-avatar';
 import { BsDot } from 'react-icons/bs';
 import axios from 'axios';
 import SearchVideoCard from '../components/SearchVideoCard';
+import { API_KEY_A } from '../api/apiKeys';
 
 const SearchPage = () => {
     const [searchResult, setSearchResult] = useState();
@@ -13,8 +14,6 @@ const SearchPage = () => {
     // const { setLoading } = useAppContext()
     const { searchQuery } = useParams();
     const img = `https://img.youtube.com/vi/BbNJNgav3Lk/maxresdefault.jpg`;
-    // const API_KEY = 'AIzaSyCW6sZ0RB6mPVVhcmYoz0N7PC1z8bZBwww';
-    const API_KEY = "AIzaSyDD5BpZSzVz_mh1w079o8sZ2mpvsa6_gt8";
 
     console.log('searchQuery', searchQuery);
     if (searchResult !== undefined) {
@@ -30,7 +29,7 @@ const SearchPage = () => {
                         regionCode: 'IN',
                         maxResults: 10,
                         q: searchQuery,
-                        key: API_KEY,
+                        key: API_KEY_A,
                         type: "video",
                     },
                 });
@@ -46,9 +45,9 @@ const SearchPage = () => {
     }, [searchQuery])
 
     return (
-        <div className='flex w-full h-full'>
+        <div className='flex w-full h-full mt-2' >
             <Sidebar />
-            <div className='flex-shrink-0 overflow-y-auto ms-40 mt-3'>
+            <div className='flex-shrink-0 overflow-y-auto ms-40'>
                 {searchResult !== undefined ?
                     searchResult.map((item, index) =>
                         <SearchVideoCard data={item} key={index} />

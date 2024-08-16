@@ -2,6 +2,7 @@ import React from 'react'
 import { IoMdHome } from "react-icons/io";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdSubscriptions } from "react-icons/md";
+import { BiHistory } from "react-icons/bi";
 
 
 const Sidebar = () => {
@@ -10,7 +11,17 @@ const Sidebar = () => {
     const navItems = [
         { title: 'Home', icon: <IoMdHome className='size-6' /> },
         { title: 'Shorts', icon: <SiYoutubeshorts className='size-6' /> },
-        { title: 'Subscriptions', icon: <MdSubscriptions className='size-6' /> }
+        { title: 'Subscriptions', icon: <MdSubscriptions className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
+        { title: 'Subscriptions', icon: <BiHistory className='size-6' /> },
     ]
 
     function handleClick(item) {
@@ -18,7 +29,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className=''>
+        <div className=' '>
             <ul className='ms-3'>
                 {
                     navItems.map((item, index) => (

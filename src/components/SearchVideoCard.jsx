@@ -12,7 +12,7 @@ const SearchVideoCard = ({ data }) => {
     return (
         <div>
             {data !== undefined ?
-                <div className='flex flex-col md:flex-row mb-8'>
+                <div className='flex flex-col md:flex-row mb-3'>
                     <Link to={'/'}>
                         <img
                             // src={'result?.snippet?.thumbnails.medium?.url'}
@@ -43,7 +43,9 @@ const SearchVideoCard = ({ data }) => {
                             <Avatar src={'data?.channelThumbnails.standard.url'} size="30" round={true} className='' />
                             <h3>{data?.snippet?.channelTitle}</h3>
                         </div>
-                        <p className='mt-2 text-sm'> Highest quality video on YouTube, Best of Dolby Vision Demo 4K HDR, 8K & 12K video ULTRA HD 240 FPS NATURE FILM, ...</p>
+                        <p className='mt-2 text-sm'>
+                            {data?.snippet?.description}
+                        </p>
 
                     </div>
                 </div>

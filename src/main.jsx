@@ -10,14 +10,17 @@ import ThemeContextProvider from './context/ThemeContextProvider.jsx';
 import VideoDataContextProvider from './context/VideoDataContextProvider.jsx';
 import { LoadingContextProvider } from './context/LoadingContextProvider.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToggleContextProvider } from './context/ToggleContextProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <ThemeContextProvider>
     <VideoDataContextProvider>
       <LoadingContextProvider>
+        <ToggleContextProvider>
           <BrowserRouter>
             <App />
           </BrowserRouter>
+        </ToggleContextProvider>
       </LoadingContextProvider>
     </VideoDataContextProvider>
   </ThemeContextProvider >
