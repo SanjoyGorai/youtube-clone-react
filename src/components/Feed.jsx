@@ -24,6 +24,9 @@ export const Feed = () => {
             setVideoData(videos);
             console.log('Feed videos: ', videos);
         })();
+
+        
+
     }, [])
 
     return (

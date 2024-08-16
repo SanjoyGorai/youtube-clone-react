@@ -1,17 +1,19 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
 import categoryItems from '../utils/categoryItems';
 import { API_KEY } from '../api/apiKeys';
+import getYTCategories from '../api/getYTCategories';
 
 
 const Chips = () => {
 
     const { videoData, setVideoData } = useContext(VideoDataContext);
     const [selectedItem, setSelectedItem] = useState(categoryItems[0]);
-    const url = `https://www.googleapis.com/youtube/v3/search`
+    const url = `https://www.googleapis.com/youtube/v3/search`;
+    const [videoCategories, setvideoCategories] = useState([]);
 
     // const handleClick = async (value) => {
     //     console.info('You clicked the Chip: ', value);
@@ -56,6 +58,19 @@ const Chips = () => {
             console.error('Error fetching videos:', error);
         }
     }
+    useEffect(() => {
+        ; (async () => {
+            const categories = await getYTCategories();
+            setvideoCategories(categories);
+            console.log('length', categories.length);
+            // categories.map(items => {
+            //     const category = items?.snippet?.title;
+            //     console.log('category:', category);
+            // });
+        })();
+
+    }, [])
+
 
     const handleClick = (item) => {
         fetchVideos(item);
@@ -64,15 +79,16 @@ const Chips = () => {
     };
 
     return (
-        <div className='flex flex-row mt-3 '>
-            {
-                categoryItems.map((item, index) => (
+        <div className='flex flex-row mt-3 '> 
+            {videoCategories !== undefined ?
+                videoCategories.slice(0, 6).map((item, index) => (
                     <button key={index} label={item}
                         onClick={() => handleClick(item)}
                         className={`font-semibold ms-3 p-1 pl-2 pr-2 rounded bg-gray-200 gap-3 
                                 ${selectedItem === item ? 'bg-gray-500' : 'hover:bg-gray-300'}`}
-                    >{item} </button>
+                    >{item?.snippet?.title} </button>
                 ))
+                : 'videoCategories undefined'
             }
         </div>
     )
