@@ -4,7 +4,7 @@ import { API_KEY_A, API_KEY_B } from "./apiKeys";
 const BASE_URL = "https://www.googleapis.com/youtube/v3"
 
 // export const BASE_URL = "https://www.googleapis.com/youtube/v3"
-export const YOUTUBE_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=100&regionCode=IN&key=${API_KEY_B}`;
+export const YOUTUBE_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=100&regionCode=IN&key=${API_KEY_A}`;
 export const SEARCH_SUGGESTIONS_API = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
 
 

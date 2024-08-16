@@ -6,7 +6,6 @@ import { BiBell, BiSearch, BiSolidCameraPlus } from "react-icons/bi";
 import { SlBell } from "react-icons/sl";
 import { IoMdHome } from "react-icons/io";
 import { MdHistory } from "react-icons/md";
-import { BiSolidLike } from "react-icons/bi";
 import { BiVideoPlus } from "react-icons/bi";
 import { PiShareFat } from "react-icons/pi";
 import { FaCheckCircle } from "react-icons/fa";
@@ -20,7 +19,8 @@ import ThemeContext from '../context/ThemeContext.js'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import ToggleContext from '../context/Togglecontext.js'
-
+import { FaUserCircle } from "react-icons/fa";
+import user from '../../public/user.png'
 
 const Navbar = () => {
 
@@ -33,7 +33,7 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResult, setSearchResult] = useState()
     // console.log('searchQuery : ', searchQuery);
-    console.log(isToggle);
+    // console.log('isToggle: ', isToggle);
 
 
     useEffect(() => {
@@ -106,11 +106,13 @@ const Navbar = () => {
 
     return (
         <>
-            <div className={`p-1 flex justify-between text-black h-14 ${isDark ? 'bg-gray-500' : 'bg-white'} `}>
+            <div className={`${isDark ? '' : ''} p-1 flex justify-between text-black h-14 ${isDark ? 'bg-gray-950 text-white ' : 'bg-white'} `}>
                 <div className='flex items-center ms-3'>
-                    <IoMenuSharp className='cursor-pointer size-10 p-2 mr-3 hover:bg-gray-300 hover:rounded-full hover:p-2' onClick={handleToggle} />
+                    <Link to={'/'}>
+                        <IoMenuSharp className='cursor-pointer size-10 p-2 mr-3 hover:bg-gray-300 hover:rounded-full hover:p-2' onClick={handleToggle} />
+                    </Link>
                     <img src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/512px-YouTube_Logo_2017.svg.png'}
-                        alt="" className='w-30 h-5 cursor-pointer ms-1' />
+                        alt="" className='w-30 h-5 cursor-pointer ms-1 select-none' />
                 </div>
                 <div className='flex items-center'>
                     <input
@@ -120,9 +122,15 @@ const Navbar = () => {
                             if (e.key === "Enter") handleSearchQuery();
                         }}
                         value={searchQuery}
-                        type="text" placeholder='Search' className={`text-black border border-gray-300 focus:border-sky-600 w-96 outline-none h-10 p-2 ps-4 rounded-l-full lg:w-[32rem]`} />
-                    <button><BiSearch className='w-16 bg-white text-gray-500 border-gray-300 border-r border-y rounded-r-full p-2 size-10 hover:bg-gray-200' /></button>
-                    <BsFillMicFill className='ms-5 p-3 size-10 bg-gray-200 rounded-full
+                        type="text" placeholder='Search'
+                        className={`${isDark ? 'bg-black text-white' : ''} text-black border border-gray-300 select-none 
+                         focus:border-sky-600 w-96 outline-none h-10 p-2 ps-4 
+                         rounded-l-full lg:w-[32rem]`}
+                    />
+                    <button className={` ${isDark ? 'bg-black text-white' : ''}`}>
+                        <BiSearch className={`${isDark ? 'bg-black text-white' : ''} w-16 bg-white text-gray-500 border-gray-300 border-r border-y rounded-r-full p-2 size-10 hover:bg-gray-200 `} />
+                    </button>
+                    <BsFillMicFill className='ms-5 p-3 size-10 bg-gray-300 rounded-full
                  hover:bg-gray-300 cursor-pointer' />
                 </div>
 
@@ -130,7 +138,7 @@ const Navbar = () => {
                     <CustomizedThemeSwitch />
                     <BiVideoPlus className='size-10 p-2 cursor-pointer rounded-full hover:bg-gray-300' />
                     <BiBell className='size-10 p-2 rounded-full cursor-pointer hover:bg-gray-300' />
-                    <Avatar src='https://livewiredemos.com/images/avatar.png' size="40" round={true} className=' cursor-pointer ' />
+                    <Avatar src={user} size="35" round={true} className=' cursor-pointer ' />
                 </div>
             </div >
         </>

@@ -72,7 +72,7 @@ function App() {
   // ]);
 
   return (
-    <div className={`${isDark ? 'bg-[#1B1F23] text-white ' : ''}`}>
+    <div className={`${isDark ? ' bg-[#1B1F23] text-white ' : ''}`}>
       <Navbar />
       {/* <YTNavbar /> */}
       {/* <SearchBar /> */}
