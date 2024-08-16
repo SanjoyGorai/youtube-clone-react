@@ -52,7 +52,8 @@ export const VideoCard = ({ data }) => {
                     />
                     <span className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-1.5 py-0.5 rounded">
                         {/* {data?.contentDetails?.duration} */}
-                        {formatYouTubeDuration(data?.contentDetails?.duration)}
+                        {data.hasOwnProperty('contentDetails') ?
+                            formatYouTubeDuration(data?.contentDetails?.duration) : '00:00'}
                     </span>
                 </div>
 

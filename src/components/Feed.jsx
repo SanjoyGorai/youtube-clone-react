@@ -13,34 +13,31 @@ import { ToggleSidebar } from './ToggleSidebar';
 export const Feed = () => {
     const [videos, setVideos] = useState();
     const { isToggle } = useContext(ToggleContext);
-
+    const { videoData, setVideoData } = useContext(VideoDataContext);
+    if (videoData !== undefined) {
+        // setVideos(videoData)
+        // console.log('setVideoData Feed:', videoData);
+    }
     useEffect(() => {
         (async () => {
             const videos = await getYTVideos()
-            setVideos(videos);
+            setVideoData(videos);
+            console.log('Feed videos: ', videos);
         })();
-
     }, [])
-
-
-    const { videoData, setVideoData } = useContext(VideoDataContext);
-    if (videoData !== undefined) {
-        // console.log('setVideoData Feed:', videoData);
-    }
-
 
     return (
         <div className='ms-2 flex'>
             <div className='flex '>
-                {!isToggle ? <Sidebar /> : <ToggleSidebar/>}
+                {!isToggle ? <Sidebar /> : <ToggleSidebar />}
 
             </div>
             <div className='flex flex-col  ml-8'>
                 <Chips />
                 <div className='lg:grid lg:grid-cols-5 space-y-3 mt-4 ms-10 space-x-3 '>
                     {
-                        videos !== undefined ?
-                            videos
+                        videoData !== undefined ?
+                            videoData
                                 // .filter(item => item.type === "video")
                                 .map((item, index) => (
                                     <Link to={`/watch?v=${item.id}`} key={index}>

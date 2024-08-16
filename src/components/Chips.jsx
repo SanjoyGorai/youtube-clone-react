@@ -4,13 +4,14 @@ import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
 import categoryItems from '../utils/categoryItems';
-
+import { API_KEY } from '../api/apiKeys';
 
 
 const Chips = () => {
 
     const { videoData, setVideoData } = useContext(VideoDataContext);
     const [selectedItem, setSelectedItem] = useState(categoryItems[0]);
+    const url = `https://www.googleapis.com/youtube/v3/search`
 
     // const handleClick = async (value) => {
     //     console.info('You clicked the Chip: ', value);
@@ -36,11 +37,30 @@ const Chips = () => {
     //     }
     // };
 
+    const fetchVideos = async (value) => {
+        try {
+            const response = await axios.get(url, {
+                params: {
+                    part: 'snippet',
+                    regionCode: 'IN',
+                    maxResults: 30,
+                    q: value,
+                    key: API_KEY,
+                    type: "video",
+                },
+            });
+            setVideoData(response.data.items)
+            console.log('Chips api call: ', response.data.items);
+
+        } catch (error) {
+            console.error('Error fetching videos:', error);
+        }
+    }
 
     const handleClick = (item) => {
+        fetchVideos(item);
         setSelectedItem(item);
         console.log(`Clicked on: ${item}`);
-        // You can perform any other action here, such as updating a parent component or fetching data.
     };
 
     return (

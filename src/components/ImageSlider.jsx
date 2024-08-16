@@ -45,16 +45,14 @@ const ImageSlider = () => {
                 onClick={goToPrevious}
                 className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white text-black
                  p-2 rounded-full hover:bg-gray-400 cursor-pointer size-16"
-            >
-                &#8249;
-            </ArrowBackIosNewIcon>
+            />
+            &#8249;
             <ArrowForwardIosIcon
                 onClick={goToNext}
                 className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white
                  text-black p-2 rounded-full hover:bg-gray-400 cursor-pointer size-16"
-            >
-                &#8250;
-            </ArrowForwardIosIcon>
+            />
+            &#8250;
         </div>
     );
 };
