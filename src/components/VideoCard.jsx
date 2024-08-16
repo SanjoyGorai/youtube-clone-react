@@ -5,7 +5,7 @@ import Avatar from 'react-avatar'
 import { Link } from 'react-router-dom';
 import formatViewsCount, { timeAgo } from '../utils/formatViewsCount';
 import formatYouTubeDuration from '../utils/formatYouTubeDuration';
-import { API_KEY_A, API_KEY_B } from '../api/apiKeys';
+import { API_KEY } from '../api/apiKeys';
 
 export const VideoCard = ({ data }) => {
 
@@ -23,7 +23,7 @@ export const VideoCard = ({ data }) => {
                 params: {
                     part: 'snippet,contentDetails,statistics',
                     id: data?.snippet?.channelId,
-                    key: API_KEY_A
+                    key: API_KEY
                 }
             })
                 .then(response => {

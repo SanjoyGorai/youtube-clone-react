@@ -6,7 +6,7 @@ import Avatar from 'react-avatar';
 import { BsDot } from 'react-icons/bs';
 import axios from 'axios';
 import SearchVideoCard from '../components/SearchVideoCard';
-import { API_KEY_A } from '../api/apiKeys';
+import { API_KEY } from '../api/apiKeys';
 
 const SearchPage = () => {
     const [searchResult, setSearchResult] = useState();
@@ -29,7 +29,7 @@ const SearchPage = () => {
                         regionCode: 'IN',
                         maxResults: 10,
                         q: searchQuery,
-                        key: API_KEY_A,
+                        key: API_KEY,
                         type: "video",
                     },
                 });
@@ -54,6 +54,7 @@ const SearchPage = () => {
                     )
                     : 'searchResult is undefined'
                 }
+
 
             </div>
 

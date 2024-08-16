@@ -30,7 +30,6 @@ const VideoDetailsPage = () => {
 
     useEffect(() => {
         ; (async () => {
-
             const options = {
                 method: 'GET',
                 url: 'https://yt-api.p.rapidapi.com/video/info',
@@ -78,15 +77,6 @@ const VideoDetailsPage = () => {
 
     return (
         <div className='max-w-[1150px]'>
-            {/* <div className=''>
-                <iframe width="900" height="615" className='rounded-xl'
-                    src={`https://www.youtube.com/embed/${videoId}?si=09gEC-FRKJLXSWun`}
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
-                // https://img.youtube.com/vi/BbNJNgav3Lk/maxresdefault.jpg
-            </div> */}
             <div className="" key={''}>
                 <div className="relative">
                     <iframe width="1150" height="685" className='rounded-xl'

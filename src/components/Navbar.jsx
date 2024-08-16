@@ -20,7 +20,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import ToggleContext from '../context/Togglecontext.js'
 import { FaUserCircle } from "react-icons/fa";
-import user from '../../public/user.png'
+import user from '/user.png'
+import { API_KEY } from '../api/apiKeys.js';
 
 const Navbar = () => {
 
@@ -38,7 +39,6 @@ const Navbar = () => {
 
     useEffect(() => {
         // (async () => {
-        //     const API_KEY = 'AIzaSyCW6sZ0RB6mPVVhcmYoz0N7PC1z8bZBwww';
         //     const url = `https://www.googleapis.com/youtube/v3/search`;
         //     const searchQuery = 'javascript tutorials';
         //     const params = {
@@ -46,7 +46,7 @@ const Navbar = () => {
         //         q: searchQuery,
         //         type: "video",
         //         maxResults: 50,
-        //         key: API_KEY
+                // key: API_KEY
         //     }
         //     axios.get(url, { params })
         //         .then(response => {

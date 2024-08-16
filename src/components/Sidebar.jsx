@@ -8,7 +8,7 @@ import { LuClock4 } from "react-icons/lu";
 import { CgPlayList } from "react-icons/cg";
 import { FaRegUser } from "react-icons/fa";
 import SubscribedChannel from './SubscribedChannel';
-import user from '../../public/user.png'
+import user from '/user.png'
 
 
 const subscribedChannels = [

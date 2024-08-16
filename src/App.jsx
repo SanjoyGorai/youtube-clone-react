@@ -14,7 +14,6 @@ import SearchBar from "./components/SearchBar";
 import YTNavbar from "./components/YTNavbar";
 import SearchVideoCard from "./components/SearchVideoCard";
 
-
 function App() {
 
   const { videoData, setVideoData } = useContext(VideoDataContext);
