@@ -81,6 +81,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Feed />} />
         <Route path="/search/:searchQuery" element={<SearchPage />} />
+        <Route path="/watch" element={<VideoDetailsPage />} />
         <Route path="/shorts" element={<ShortsPage />} />
       </Routes>
     </div>

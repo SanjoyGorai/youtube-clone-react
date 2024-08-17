@@ -76,8 +76,8 @@ const VideoDetailsPage = () => {
     const logo = 'https://livewiredemos.com/images/avatar.png'
 
     return (
-        <div className='max-w-[1150px]'>
-            <div className="" key={''}>
+        <div className='max-w-[1150px] ms-28 mt-6'>
+            <div className="" key={'/watch'}>
                 <div className="relative">
                     <iframe width="1150" height="685" className='rounded-xl'
                         src={`https://www.youtube.com/embed/${videoId}?si=09gEC-FRKJLXSWun`}

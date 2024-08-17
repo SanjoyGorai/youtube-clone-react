@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { VideoCard } from './VideoCard'
 import axios from 'axios';
 import VideoDataContext from '../context/VideoDataContext';
-import Chips from './Chips';
+import CategoryChips from './CategoryChips';
 import Facebook from './VideoCardSkeleton';
 import { Link } from 'react-router-dom';
 import getYTVideos from '../api/getYTVideos';
@@ -36,7 +36,7 @@ export const Feed = () => {
 
             </div>
             <div className='flex flex-col  ml-8'>
-                <Chips />
+                <CategoryChips />
                 <div className='lg:grid lg:grid-cols-5 space-y-3 mt-4 ms-10 space-x-3 '>
                     {
                         videoData !== undefined ?
