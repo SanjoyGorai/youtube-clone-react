@@ -19,13 +19,13 @@ export const Feed = () => {
         // console.log('setVideoData Feed:', videoData);
     }
     useEffect(() => {
-        (async () => {
+        document.title = 'Feed Page';
+
+        ; (async () => {
             const videos = await getYTVideos()
             setVideoData(videos);
             console.log('Feed videos: ', videos);
         })();
-
-        
 
     }, [])
 
@@ -43,7 +43,7 @@ export const Feed = () => {
                             videoData
                                 // .filter(item => item.type === "video")
                                 .map((item, index) => (
-                                    <Link to={`/watch?v=${item.id}`} key={index}>
+                                    <Link to={`/watch?v=${item?.id}`} key={index}>
                                         <VideoCard data={item} />
                                     </Link>
                                 )) : ''

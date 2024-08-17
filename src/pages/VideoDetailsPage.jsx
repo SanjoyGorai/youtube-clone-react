@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useSearchParams } from "react-router-dom";
 import axios from 'axios';
 import Avatar from 'react-avatar'
 import { BsDot } from 'react-icons/bs'
 import Description from '../components/Description';
 import TopRow from '../components/TopRow';
+import VideoDataContext from '../context/VideoDataContext';
 
 const VideoDetailsPage = () => {
 
@@ -14,7 +15,8 @@ const VideoDetailsPage = () => {
     const [videoDetails, setVideoDetails] = useState();
     const [channelDetails, setChannelDetails] = useState();
     const longText = `Now let's talk about another arrival, one that started to change warfare as we know it. But first, a question: what is the biggest problem with Israel's Iron Dome system? I would argue it's the cost. Each Israeli interceptor missile costs about $50,000, but what if Israel had a cost-effective way to stop the rockets, a way to hit one rocket after another endlessly without having to worry about its expensive interceptors running out? Sounds ideal, right? Well, it may become a reality soon because Israel is reportedly rolling out a new defense system. It's the stuff of sci-fi movies. Israel calls it its defensive trump card. It's the iron beam anti-missile laser system...`;
-
+    const { videoData, setVideoData } = useContext(VideoDataContext);
+    console.log('videoData from VideoDetailsPage: ', videoData);
 
     function formatSubscriberCount(num) {
         if (num >= 1e9) {
@@ -91,7 +93,7 @@ const VideoDetailsPage = () => {
                 </div>
 
                 <div className="py-2 ">
-                    <TopRow channelDetails={channelDetails} />
+                    <TopRow channelDetails={channelDetails} videoData={videoData} />
                     {/* <div className='flex flow-row gap-3 items-center'>
                         <Avatar src={logo} size="42" round={true} className='' />
                         <div className='fles p-1'>

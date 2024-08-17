@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
+import { timeAgo } from '../utils/formatViewsCount';
 
-const Description = ({ details, videoDetails }) => {
+const Description = ({  videoDetails }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    console.log('channel details Description: ', details);
     console.log('video details from Description: ', videoDetails);
-
 
     const toggleDescription = () => {
         setIsExpanded(!isExpanded);
     };
     const text = `The TED Talks channel features the best talks and performances from the TED Conference, where the world's leading thinkers and doers give the talk of their lives in 18 minutes (or less). Look for talks on Technology, Entertainment and Design -- plus science, business, global issues, the arts and more. You're welcome to link to or embed these videos, forward them to others and share these ideas with people you know.`
-    const maxLength = 10;
-    let description = '';
-    const shouldTruncate = description.length > maxLength;
-    if (details?.description !== undefined) {
-        description = details.description;
-    }
+    const maxLength = 100;
+    let description = videoDetails?.description;
+    const shouldTruncate = description?.length > maxLength;
     description = isExpanded || !shouldTruncate ? description :
         description.substring(0, maxLength) + '...';
 
@@ -41,11 +37,6 @@ const Description = ({ details, videoDetails }) => {
         }
     }
 
-    // Example usage:
-    console.log('views count: ', formatViewsCount(1500)); // "1.5K views"
-    console.log('views count: ', formatViewsCount("1500000")); // "1.5M views"
-    console.log('views count: ', formatViewsCount("2000000000")); // "2B views"
-    console.log('views count: ', formatViewsCount("not a number")); // "Invalid number"
     function formatDate(dateString) {
         const date = new Date(dateString);
 
@@ -67,17 +58,26 @@ const Description = ({ details, videoDetails }) => {
     return (
         <div className='bg-gray-400 rounded p-2'>
             <div className='flex flex-row gap-2 font-semibold'>
-                <p>{formatViewsCount(videoDetails?.viewCount)}</p>
-                <p>{formatDate(videoDetails?.publishDate)}  </p>
+                {
+                    isExpanded ? <p>{(videoDetails?.viewCount)} views</p>
+                        : <p>{formatViewsCount(videoDetails?.viewCount)}</p>
+                }
+                {
+                    isExpanded ? <p>{formatDate(videoDetails?.publishDate)}  </p>
+                        : <p>{timeAgo(videoDetails?.publishDate)}  </p>
+                }
+
             </div>
             <p>{description}</p>
 
-            {shouldTruncate && (
-                <button onClick={toggleDescription} className="text-blue-500">
-                    {isExpanded ? 'Show Less' : 'Show More'}
-                </button>
-            )}
-        </div>
+            {
+                shouldTruncate && (
+                    <button onClick={toggleDescription} className="text-blue-500">
+                        {isExpanded ? 'Show Less' : 'Show More'}
+                    </button>
+                )
+            }
+        </div >
     );
 };
 

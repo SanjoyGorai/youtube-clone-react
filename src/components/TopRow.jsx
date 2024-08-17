@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BiSolidLike } from "react-icons/bi";
 import { PiShareFat } from "react-icons/pi";
 import Button from '@mui/material/Button';
@@ -18,17 +18,24 @@ const icons = [
     { icon: <PiDotsThreeBold />, text: '' },
 ]
 
-const TopRow = ({ channelDetails, videoDetails }) => {
+const TopRow = ({ channelDetails, videoData }) => {
     console.log('channel Details from TopRow: ', channelDetails);
+    console.log('channel videoData from TopRow: ', videoData);
 
     return (
         <div>
             <div className='flex flex-row items-center justify-between py-4'>
                 <div className='flex items-center'>
-                    <img src="" alt="" className='size-12 bg-red-500 rounded-full' />
+                    <img
+                        src={channelDetails?.avatar[0]?.url}
+                        alt=""
+                        className='size-12 bg-red-500 rounded-full'
+                    />
                     <div className='ms-3'>
-                        <h3 className="text-lg font-bold">channel name</h3>
-                        <p>subscriber</p>
+                        <h3 className="text-lg font-bold">
+                            {channelDetails?.title}
+                        </h3>
+                        <p>{channelDetails?.subscriberCount}</p>
                     </div>
                     <div className='flex flex-row gap-2 ms-7'>
                         <button className='bg-black text-white rounded-3xl py-2 px-4 font-normal font-roboto'>Join</button>

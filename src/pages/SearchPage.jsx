@@ -21,6 +21,8 @@ const SearchPage = () => {
     }
 
     useEffect(() => {
+        document.title = `${searchQuery} -Youtube`;
+
         const fetchVideos = async () => {
             try {
                 const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {

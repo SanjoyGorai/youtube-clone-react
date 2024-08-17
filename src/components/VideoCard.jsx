@@ -13,10 +13,11 @@ export const VideoCard = ({ data }) => {
     if (channelDetails !== undefined) {
         console.log('channelDetails', channelDetails);
     }
-    // console.log('video details', data);
+    console.log('video details VideoCard:', data);
 
 
     useEffect(() => {
+    //    channel details
         (async () => {
             const url = `https://www.googleapis.com/youtube/v3/channels`;
             axios.get(url, {
